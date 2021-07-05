@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../../styles/components/search.scss';
 
 const Search = () => {
   return (
@@ -29,9 +30,9 @@ const Search = () => {
     </div>
 
       <div className="search-result" >
-          <figure>
-            <img src="https://i.ibb.co/vzZ0ZWG/feather-search.png" alt="" />
-            <figcaption>Realiza una busqueda</figcaption>
+          <figure className="img-div">
+            <img className="img-search" src="https://i.ibb.co/vzZ0ZWG/feather-search.png" alt="" />
+            <figcaption className="text-img">Realiza una busqueda</figcaption>
           </figure>
           
       </div>
