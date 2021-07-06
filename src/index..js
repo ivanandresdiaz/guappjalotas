@@ -1,10 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import reduxThunk from 'redux-thunk';
 import App from './routes/App';
 import './styles/Global.scss';
 
+import reducers from './reducers/index';
+
 const initialState = {
   'users': [],
+  'cargando': false,
   'carrito': [],
   'tamales': [
     {
@@ -152,4 +158,15 @@ const initialState = {
     },
   ],
 };
-ReactDOM.render(<App />, document.getElementById('app'));
+const store = createStore(
+  reducers, //reducer
+  initialState, //estado inicial
+  applyMiddleware(reduxThunk),
+);
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+
+  , document.getElementById('app'),
+);
