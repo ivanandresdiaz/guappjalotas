@@ -1,14 +1,25 @@
 @import "../variables.scss";
 
-body {
-  background-color: $color-primary;
-  color: #d3c3ed;
-}
+
+/*body {
+  background-color: $color-gray;
+ color: #d3c3ed;
+}*/
 
 .img-div{
     position: static;
-width: 122px;
-height: 122px;
-left: 29px;
-top: 0px;
+text-align: center;
+position: absolute;
+width: 180px;
+height: 167px;
+left: calc(50% - 180px/2);
+top: calc(50% - 167px/2);
+}
+
+.text-img{
+  font-size: 15px;
+}
+
+#link{
+  padding: 10px;
 }

@@ -5,10 +5,10 @@ const Product = () => {
   return (
     <div>
       <h1>Producr</h1>
-      <Link to='/'>Home</Link>
-      <Link to='/carrito'>Carrito</Link>
-      <Link to='/product'>product</Link>
-      <Link to='/search'>buscar</Link>
+      <Link id="link" to='/'>Home</Link>
+      <Link  to='/carrito'>Carrito</Link>
+      <Link id="link" to='/product'>product</Link>
+      <Link id="link" to='/search'>search</Link>
     </div>
   );
 };

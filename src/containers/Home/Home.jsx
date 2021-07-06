@@ -11,10 +11,10 @@ const Home = () => {
         <MdAccountCircle size='5rem' color='red' />
       </div>
 
-      <Link to='/'>Home</Link>
-      <Link to='/carrito'>Carrito</Link>
-      <Link to='/product'>product</Link>
-      <Link to='/search'>buscar</Link>
+      <Link id="link" to='/'>Home</Link>
+      <Link id="link" to='/carrito'>Carrito</Link>
+      <Link id="link" to='/product'>product</Link>
+      <Link id="link" to='/search'>search</Link>
       <h1>Iconos a utilizar</h1>
       <IconosUsar />
     </div>
