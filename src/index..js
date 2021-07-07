@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import reduxThunk from 'redux-thunk';
 import App from './routes/App';
 import './styles/Global.scss';
+import './styles/components/HomeS.scss';
+import './styles/components/ProductS.scss';
 
 import reducers from './reducers/index';
 
