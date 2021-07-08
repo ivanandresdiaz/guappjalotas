@@ -1,51 +1,45 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import bebida from '../../images/bebida.png';
-import tamal from '../../images/tamal.png';
-import guajalota from '../../images/guajalota.png';
-import '../../styles/components/ProductS.scss';
-//detalle producto
-import DetailProduct from './DetailProduct';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import CarouselProducts from '../../components/CarouselProducts/CarouselProducts';
+import Header from '../../components/Header/Header';
+import '../../styles/containers/Product.scss';
 
-const Product = () => {
+const Product = (props) => {
+  const [carouselProducts, setCarouselProducts] = useState([]);
+  const { guajolotas, bebidas, tamales, match: { params: { type, key } } } = props;
+  const handleRenderCarouselProducts = (grupoProductos) => {
+    // el proposito de carouselProducts es identificar que grupo de productos se rendizarn en el Carousel.
+    //se utiliza el type que se enviar por los parametros de la URL de React-router-dom.
+    switch (grupoProductos) {
+      case 'guajolotas':
+        setCarouselProducts(guajolotas) ;
+        break;
+      case 'bebidas':
+        setCarouselProducts(bebidas);
+        break;
+      case 'tamales':
+        setCarouselProducts(tamales);
+        break;
+      default:
+        return null;
+    }
+  };
+  useEffect(() => {
+    handleRenderCarouselProducts(type);
+  }, []);
   return (
     <div>
-      <div className='products'>
-        <h1>Product</h1>
-        <NavLink exact activeClassName='nav-product' to='/product'>Guajolotas</NavLink>
-        <NavLink exact activeClassName='nav-product' to='/product'>Bebidas</NavLink>
-        <NavLink exact activeClassName='nav-product' to='/product'>Tamales</NavLink>
-      </div>
-      <section className='guajolotas'>
-        <div className='card'>
-          <img className='card-img' src={guajalota} alt='Card' />
-          <div className='card-body'>
-            <h1 className='product-name'>Verde</h1>
-            <p className='card-text'>$12 MXN</p>
-          </div>
-        </div>
-      </section>
-      <section className='bebidas'>
-        <div className='card'>
-          <img className='card-img' src={bebida} alt='Card' />
-          <div className='card-body'>
-            <h1 className='product-name'>Champurrado</h1>
-            <p className='card-text'>$50 MXN</p>
-          </div>
-        </div>
-      </section>
-      <section className='tamales'>
-        <div className='card'>
-          <img className='card-img' src={tamal} alt='Card' />
-          <div className='card-body'>
-            <h1>Tamal Verde </h1>
-            <p className='card-text'>50 MXN</p>
-          </div>
-        </div>
-      </section>
-      <DetailProduct />
+      <Header />
+      <CarouselProducts products={carouselProducts} keyProduct={key} />
     </div>
   );
 };
+const mapStateToProps = (state) => {
+  return {
+    guajolotas: state.guajolotas,
+    bebidas: state.bebidas,
+    tamales: state.tamales,
+  };
+};
 
-export default Product;
+export default connect(mapStateToProps)(Product);

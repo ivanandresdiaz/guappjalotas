@@ -1,0 +1,18 @@
+.Home__product-card {
+  width: 80%;
+  margin: 20px auto;
+  border-radius: 25px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-template-columns: 35% 65%;
+  justify-items: center;
+  align-items: center;
+  padding: 10px 0;
+  .card-body {
+    justify-self: start;
+  }
+}
+.CardProductLink {
+  text-decoration: none;
+  color: black;
+}

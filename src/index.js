@@ -5,8 +5,6 @@ import { Provider } from 'react-redux';
 import reduxThunk from 'redux-thunk';
 import App from './routes/App';
 import './styles/Global.scss';
-import './styles/components/HomeS.scss';
-import './styles/components/ProductS.scss';
 
 import reducers from './reducers/index';
 
@@ -17,6 +15,7 @@ const initialState = {
   'tamales': [
     {
       'id': 1,
+      'type': 'tamales',
       'title': 'Tamal verde',
       'price': 25,
       'stock': 5,
@@ -26,6 +25,7 @@ const initialState = {
     },
     {
       'id': 2,
+      'type': 'tamales',
       'title': 'Tamal de mole',
       'price': 23,
       'stock': 3,
@@ -35,6 +35,7 @@ const initialState = {
     },
     {
       'id': 3,
+      'type': 'tamales',
       'title': 'Tamal de guayaba',
       'price': 25,
       'stock': 4,
@@ -44,6 +45,7 @@ const initialState = {
     },
     {
       'id': 4,
+      'type': 'tamales',
       'title': 'Tamal de piña',
       'price': 30,
       'stock': 1,
@@ -53,6 +55,7 @@ const initialState = {
     },
     {
       'id': 5,
+      'type': 'tamales',
       'title': 'Tamal de pasas',
       'price': 20,
       'stock': 1,
@@ -62,6 +65,7 @@ const initialState = {
     },
     {
       'id': 6,
+      'type': 'tamales',
       'title': 'Tamal de rajas',
       'price': 15,
       'stock': 0,
@@ -70,9 +74,10 @@ const initialState = {
       'tasteCover': 'https://i.imgur.com/3XWzRhs.png',
     },
   ],
-  'bebidas ': [
+  'bebidas': [
     {
       'id': 21,
+      'type': 'bebidas',
       'title': 'Champurrado',
       'price': 5,
       'stock': 5,
@@ -81,6 +86,7 @@ const initialState = {
     },
     {
       'id': 22,
+      'type': 'bebidas',
       'title': 'Atole de arroz con Leche',
       'price': 6,
       'stock': 10,
@@ -89,6 +95,7 @@ const initialState = {
     },
     {
       'id': 23,
+      'type': 'bebidas',
       'title': 'Chocolate Caliente',
       'price': 10,
       'stock': 10,
@@ -97,6 +104,7 @@ const initialState = {
     },
     {
       'id': 24,
+      'type': 'bebidas',
       'title': 'Cafe Negro',
       'price': 5,
       'stock': 20,
@@ -106,6 +114,7 @@ const initialState = {
   'guajolotas': [
     {
       'id': 31,
+      'type': 'guajolotas',
       'title': 'Guapjalota verde',
       'price': 25,
       'stock': 5,
@@ -115,6 +124,7 @@ const initialState = {
     },
     {
       'id': 32,
+      'type': 'guajolotas',
       'title': 'Guagjalota de mole',
       'price': 23,
       'stock': 3,
@@ -124,6 +134,7 @@ const initialState = {
     },
     {
       'id': 33,
+      'type': 'guajolotas',
       'title': 'Guagjalota de guayaba',
       'price': 25,
       'stock': 4,
@@ -133,6 +144,7 @@ const initialState = {
     },
     {
       'id': 34,
+      'type': 'guajolotas',
       'title': 'Guagjalota de piña',
       'price': 30,
       'stock': 1,
@@ -142,6 +154,7 @@ const initialState = {
     },
     {
       'id': 35,
+      'type': 'guajolotas',
       'title': 'Guagjalota de pasas',
       'price': 20,
       'stock': 1,
@@ -151,6 +164,7 @@ const initialState = {
     },
     {
       'id': 36,
+      'type': 'guajolotas',
       'title': 'Guagjalota de rajas',
       'price': 15,
       'stock': 0,
