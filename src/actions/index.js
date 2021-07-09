@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-export const prueba = () => {
+export const prueba = () => (dispatch, getState) => {
   return (dispatch, getState) => {
     console.log('se ejecuto prueba');
     dispatch({
@@ -8,4 +8,10 @@ export const prueba = () => {
 
     const { cargando } = getState();
   };
+};
+export const añadirCarrito = (payload) => (dispatch) => {
+  dispatch({
+    type: 'ADD_CARRITO',
+    payload,
+  });
 };

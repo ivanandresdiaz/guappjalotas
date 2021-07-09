@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../styles/components/CardProduct.scss';
 
 const CardProduct = (props) => {
+
   const { producto } = props;
   return (
     <Link to={`/producto/${producto.type}/${producto.id}`} className='CardProductLink'>
@@ -22,10 +24,11 @@ const CardProduct = (props) => {
             unidades disponibles:
             {producto.stock}
           </p>
+
         </div>
       </section>
     </Link>
   );
 };
 
-export default CardProduct;
+export default connect()(CardProduct);
