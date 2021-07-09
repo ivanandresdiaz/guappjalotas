@@ -52,7 +52,6 @@ const mapStateToProps = (state, props) => {
   };
 };
 const mapDispatchToProps = {
-  prueba,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
