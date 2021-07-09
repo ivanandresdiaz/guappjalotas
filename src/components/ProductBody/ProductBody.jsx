@@ -4,11 +4,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { MdControlPoint, MdRemoveCircleOutline } from 'react-icons/md';
-import { añadirCarrito, eliminarCarrito } from '../../actions/index';
-import { DivProductItem, DivSaboresProduct, ImgSaboresDefault } from './styledProductBody';
+import { añadirCarrito, eliminarCarrito, añadirCarritoSugerencia, eliminarCarritoSugerencia } from '../../actions/index';
+import { DivProductItem, DivSaboresProduct, ImgSaboresDefault, DivProductosSugerencia } from './styledProductBody';
 
-const CarouselProducts = (props) => {
-  const { products, keyProduct, añadirCarrito, eliminarCarrito, productoSugerencia } = props;
+const ProductBody = (props) => {
+  const { products, keyProduct, añadirCarrito, eliminarCarrito, productosSugerencia, tipoSugerencia, añadirCarritoSugerencia, eliminarCarritoSugerencia, carrito } = props;
   const keyProductToNumber = parseInt(keyProduct); //convertir el keyProduct de "1" string a 1 number;
   const productos = products.filter((product) => product.id === keyProductToNumber);// identificar que producto debo mostrar
   const product = productos[0];
@@ -20,6 +20,14 @@ const CarouselProducts = (props) => {
       eliminarCarrito(producto);
     }
   };
+  const handleChange = (evento, producto) => {
+    if (evento.target.checked) {
+      añadirCarritoSugerencia(producto);
+    } else {
+      eliminarCarritoSugerencia(producto);
+    }
+  };
+  console.log(props.carrito);
   return (
     <section>
       <DivProductItem key={product.id}>
@@ -65,12 +73,35 @@ const CarouselProducts = (props) => {
           );
         })}
       </DivSaboresProduct>
-      <div className='bebidas'>
-        <div className='bebidas_Presentacion'>
-          <h3>Bebidas</h3>
-          <p>Selecciona la bebida que más te guste y disfruta de tu desayuno.</p>
+      <div className='SugerenciaContainer'>
+        <div className='Sugerencia_Presentacion'>
+          <h3>Combo</h3>
+          <p>
+            Selecciona las
+            {' '}
+            {tipoSugerencia}
+            {' '}
+            que más te gusten y disfruta de tu desayuno.
+          </p>
         </div>
-
+        <DivProductosSugerencia className='Productos_sugerencia'>
+          {productosSugerencia.map((producto) => {
+            const isCarrito = carrito.filter((item) => item.id === producto.id);
+            const isChecked = isCarrito.length > 0;
+            return (
+              <div key={producto.id}>
+                <img src={producto.cover} alt={producto.title} />
+                <h6>{producto.title}</h6>
+                <p>
+                  MXN
+                  {' '}
+                  {producto.price}
+                </p>
+                <input type='checkbox' onChange={(evento) => handleChange(evento, producto)} defaultChecked={isChecked} />
+              </div>
+            );
+          })}
+        </DivProductosSugerencia>
       </div>
     </section>
 
@@ -83,5 +114,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   añadirCarrito,
   eliminarCarrito,
+  añadirCarritoSugerencia,
+  eliminarCarritoSugerencia,
 };
-export default connect(mapStateToProps, mapDispatchToProps)(CarouselProducts);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductBody);

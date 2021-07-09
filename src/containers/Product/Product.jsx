@@ -9,11 +9,11 @@ const Product = (props) => {
   const resolveRoute = () => {
     switch (type) {
       case 'guajolotas':
-        return <ProductBody products={guajolotas} keyProduct={key} productoSugerencia={bebidas} />;
+        return <ProductBody products={guajolotas} keyProduct={key} productosSugerencia={bebidas} tipoSugerencia='bebidas' />;
       case 'bebidas':
-        return <ProductBody products={bebidas} keyProduct={key} />;
+        return <ProductBody products={bebidas} keyProduct={key} tipoSugerencia='torta' />;
       case 'tamales':
-        return <ProductBody products={tamales} keyProduct={key} productoSugerencia={bebidas} />;
+        return <ProductBody products={tamales} keyProduct={key} productosSugerencia={bebidas} tipoSugerencia='bebidas' />;
       default:
         return null;
     }

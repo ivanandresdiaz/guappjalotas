@@ -9,5 +9,11 @@ grid-template-columns: 1fr 1fr 1fr;
 width: 90%;
 `;
 export const ImgSaboresDefault = styled.img`
-filter: grayscale(80%) 
+filter: brightness(120%) saturate(20%) grayscale(75%)  ; 
+`;
+export const DivProductosSugerencia = styled.div`
+display: grid;
+grid-template-columns: 1fr 1fr ;
+gap: 15px;
+width: 90%;
 `;
