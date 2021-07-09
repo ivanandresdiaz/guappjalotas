@@ -1,40 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { añadirCarrito } from '../../actions/index';
-import CarouselProducts from '../../components/CarouselProducts/CarouselProducts';
+import ProductBody from '../../components/ProductBody/ProductBody';
 import Header from '../../components/Header/Header';
 import '../../styles/containers/Product.scss';
 
 const Product = (props) => {
-  const [carouselProducts, setCarouselProducts] = useState([]);
-  const { guajolotas, bebidas, tamales, match: { params: { type, key } }, añadirCarrito } = props;
-  const handleRenderCarouselProducts = (grupoProductos) => {
-    // el proposito de carouselProducts es identificar que grupo de productos se rendizarn en el Carousel.
-    //se utiliza el type que se enviar por los parametros de la URL de React-router-dom.
-    switch (grupoProductos) {
+  const { guajolotas, bebidas, tamales, match: { params: { type, key } } } = props;
+  const resolveRoute = () => {
+    switch (type) {
       case 'guajolotas':
-        setCarouselProducts(guajolotas) ;
-        break;
+        return <ProductBody products={guajolotas} keyProduct={key} />;
       case 'bebidas':
-        setCarouselProducts(bebidas);
-        break;
+        return <ProductBody products={bebidas} keyProduct={key} />;
       case 'tamales':
-        setCarouselProducts(tamales);
-        break;
+        return <ProductBody products={tamales} keyProduct={key} />;
       default:
         return null;
     }
   };
-  useEffect(() => {
-    handleRenderCarouselProducts(type);
-  }, []);
-  console.log(props);
   return (
     <div>
       <Header />
-      <CarouselProducts products={carouselProducts} keyProduct={key} añadirCarrito={añadirCarrito} />
+      {
+        resolveRoute()
+      }
     </div>
   );
+
 };
 const mapStateToProps = (state) => {
   return {
@@ -43,8 +35,5 @@ const mapStateToProps = (state) => {
     tamales: state.tamales,
   };
 };
-const mapDispatchToProps = {
-  añadirCarrito,
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Product);
+export default connect(mapStateToProps, null)(Product);

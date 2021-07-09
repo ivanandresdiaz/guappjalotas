@@ -1,7 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { prueba } from '../../actions/index';
 import Header from '../../components/Header/Header';
 import CardProduct from '../../components/CardProduct/CardProduct';
 import Searcher from '../../components/Searcher/Seacher';
