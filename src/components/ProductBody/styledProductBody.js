@@ -1,6 +1,9 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
 
+export const DivSugerenciasContainer = styled.div`
+
+`;
 export const DivProductItem = styled.div`
 `;
 export const DivSaboresProduct = styled.div`
@@ -17,3 +20,4 @@ grid-template-columns: 1fr 1fr ;
 gap: 15px;
 width: 90%;
 `;
+

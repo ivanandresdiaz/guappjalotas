@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { MdControlPoint, MdRemoveCircleOutline } from 'react-icons/md';
 import { añadirCarrito, eliminarCarrito, añadirCarritoSugerencia, eliminarCarritoSugerencia } from '../../actions/index';
-import { DivProductItem, DivSaboresProduct, ImgSaboresDefault, DivProductosSugerencia } from './styledProductBody';
+import { DivProductItem, DivSaboresProduct, ImgSaboresDefault, DivProductosSugerencia, DivSugerenciasContainer } from './styledProductBody';
 
 const ProductBody = (props) => {
   const { products, keyProduct, añadirCarrito, eliminarCarrito, productosSugerencia, tipoSugerencia, añadirCarritoSugerencia, eliminarCarritoSugerencia, carrito } = props;
@@ -73,7 +73,7 @@ const ProductBody = (props) => {
           );
         })}
       </DivSaboresProduct>
-      <div className='SugerenciaContainer'>
+      <DivSugerenciasContainer className='SugerenciaContainer'>
         <div className='Sugerencia_Presentacion'>
           <h3>Combo</h3>
           <p>
@@ -85,23 +85,30 @@ const ProductBody = (props) => {
           </p>
         </div>
         <DivProductosSugerencia className='Productos_sugerencia'>
-          {productosSugerencia.map((producto) => {
-            const isCarrito = carrito.filter((item) => item.id === producto.id);
+          {productosSugerencia.map((productoSugerido) => {
+            const isCarrito = carrito.filter((item) => item.id === productoSugerido.id);
             const isChecked = isCarrito.length > 0;
             return (
-              <div key={producto.id}>
-                <img src={producto.cover} alt={producto.title} />
-                <h6>{producto.title}</h6>
+              <div key={productoSugerido.id}>
+                <img src={productoSugerido.cover} alt={productoSugerido.title} />
+                <h6>{productoSugerido.title}</h6>
                 <p>
                   MXN
                   {' '}
-                  {producto.price}
+                  {productoSugerido.price}
                 </p>
-                <input type='checkbox' onChange={(evento) => handleChange(evento, producto)} defaultChecked={isChecked} />
+                <input type='checkbox' onChange={(evento) => handleChange(evento, productoSugerido)} defaultChecked={isChecked} />
               </div>
             );
           })}
         </DivProductosSugerencia>
+      </DivSugerenciasContainer>
+      <div>
+        <button type='button'>
+          Pagar en Carrito $
+          {' '}
+          {carrito.length > 0 ? carrito.reduce((acc, el) => acc + el.price, 0) : 0}
+        </button>
       </div>
     </section>
 

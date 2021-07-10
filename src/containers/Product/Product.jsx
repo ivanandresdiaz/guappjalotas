@@ -11,7 +11,7 @@ const Product = (props) => {
       case 'guajolotas':
         return <ProductBody products={guajolotas} keyProduct={key} productosSugerencia={bebidas} tipoSugerencia='bebidas' />;
       case 'bebidas':
-        return <ProductBody products={bebidas} keyProduct={key} tipoSugerencia='torta' />;
+        return <ProductBody products={bebidas} keyProduct={key} productosSugerencia={guajolotas} tipoSugerencia='torta' />;
       case 'tamales':
         return <ProductBody products={tamales} keyProduct={key} productosSugerencia={bebidas} tipoSugerencia='bebidas' />;
       default:

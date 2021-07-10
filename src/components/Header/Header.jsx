@@ -17,9 +17,12 @@ const Header = (props) => {
             <MdChevronLeft color='#0D0D0D' size='30px' />
           </Link>
         )}
-        <div className='Header__icon-container'>
-          <MdShoppingCart color='#AEAEAE' size='3rem' />
-        </div>
+        <Link to='/carrito'>
+          <div className='Header__icon-container'>
+            <MdShoppingCart color='#AEAEAE' size='3rem' />
+          </div>
+        </Link>
+
       </div>
     </section>
   );

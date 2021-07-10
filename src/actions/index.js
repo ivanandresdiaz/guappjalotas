@@ -8,11 +8,41 @@ export const prueba = () => (dispatch, getState) => {
   };
 };
 export const añadirCarrito = (producto) => (dispatch, getState) => {
-
-  dispatch({
-    type: 'ADD_CARRITO',
-    payload: producto,
+  const { carrito } = getState();
+  const isProductInCarrito = carrito.find((productoConsulta) => {
+    return productoConsulta.id === producto.id;
   });
+  const isProductInCarritoBoolean = !!isProductInCarrito;
+  if (isProductInCarritoBoolean) {
+    const carritoActualizado = carrito.map((item) => {
+      if (item.id === producto.id) {
+        if (item.stock === 0) {
+          return item;
+        }
+        return {
+          ...item,
+          stock: item.stock - 1,
+          pedido: item.pedido + 1,
+        };
+      }
+      return item;
+    });
+    dispatch({
+      type: 'UPDATE_CARRITO',
+      payload: carritoActualizado,
+    });
+  } else {
+    const productoEnviarReducer = {
+      ...producto,
+      stock: producto.stock - 1,
+      pedido: producto.pedido + 1,
+    };
+    dispatch({
+      type: 'ADD_CARRITO',
+      payload: productoEnviarReducer,
+    });
+  }
+
   const seleccionarCategoriaProducto = () => {
     switch (producto.type) {
       case 'guajolotas':
@@ -54,7 +84,7 @@ export const añadirCarrito = (producto) => (dispatch, getState) => {
       break;
     case 'bebidas':
       dispatch({
-        type: 'UPDATE_GUAJOLOTAS',
+        type: 'UPDATE_BEBIDAS',
         payload: categoriaActualizada,
       });
       break;
@@ -156,19 +186,19 @@ export const añadirCarritoSugerencia = (producto) => (dispatch, getState) => {
   switch (producto.type) {
     case 'guajolotas':
       dispatch({
-        type: 'UPDATE_GUAJOLOTAS',
+        type: 'UPDATE_BEBIDAS',
         payload: categoriaActualizada,
       });
       break;
     case 'tamales':
       dispatch({
-        type: 'UPDATE_TAMALES',
+        type: 'UPDATE_BEBIDAS',
         payload: categoriaActualizada,
       });
       break;
     case 'bebidas':
       dispatch({
-        type: 'UPDATE_BEBIDAS',
+        type: 'UPDATE_GUAJOLOTAS',
         payload: categoriaActualizada,
       });
       break;
@@ -214,19 +244,19 @@ export const eliminarCarritoSugerencia = (producto) => (dispatch, getState) => {
   switch (producto.type) {
     case 'guajolotas':
       dispatch({
-        type: 'UPDATE_GUAJOLOTAS',
+        type: 'UPDATE_BEBIDAS',
         payload: categoriaActualizada,
       });
       break;
     case 'tamales':
       dispatch({
-        type: 'UPDATE_TAMALES',
+        type: 'UPDATE_BEBIDAS',
         payload: categoriaActualizada,
       });
       break;
     case 'bebidas':
       dispatch({
-        type: 'UPDATE_BEBIDAS',
+        type: 'UPDATE_GUAJOLOTAS',
         payload: categoriaActualizada,
       });
       break;
