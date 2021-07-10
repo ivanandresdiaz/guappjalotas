@@ -4,16 +4,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { MdControlPoint, MdRemoveCircleOutline } from 'react-icons/md';
-import { añadirCarrito, eliminarCarrito, añadirCarritoSugerencia, eliminarCarritoSugerencia } from '../../actions/index';
+import { añadirCarrito, eliminarCarrito } from '../../actions/index';
 import { DivProductItem, DivSaboresProduct, ImgSaboresDefault, DivProductosSugerencia, DivSugerenciasContainer } from './styledProductBody';
 
 const ProductBody = (props) => {
-  const { products, keyProduct, añadirCarrito, eliminarCarrito, productosSugerencia, tipoSugerencia, añadirCarritoSugerencia, eliminarCarritoSugerencia, carrito } = props;
+  const { products, keyProduct, añadirCarrito, eliminarCarrito, productosSugerencia, tipoSugerencia, carrito } = props;
   const keyProductToNumber = parseInt(keyProduct); //convertir el keyProduct de "1" string a 1 number;
   const productos = products.filter((product) => product.id === keyProductToNumber);// identificar que producto debo mostrar
   const product = productos[0];
   const handleAñadirCarrito = (producto) => {
-    añadirCarrito(producto);
+    if (producto.stock > 0) {
+      añadirCarrito(producto);
+    }
+
   };
   const handleEliminarCarrito = (producto) => {
     if (producto.pedido > 0) {
@@ -22,9 +25,9 @@ const ProductBody = (props) => {
   };
   const handleChange = (evento, producto) => {
     if (evento.target.checked) {
-      añadirCarritoSugerencia(producto);
+      añadirCarrito(producto);
     } else {
-      eliminarCarritoSugerencia(producto);
+      eliminarCarrito(producto);
     }
   };
   console.log(props.carrito);
@@ -104,11 +107,14 @@ const ProductBody = (props) => {
         </DivProductosSugerencia>
       </DivSugerenciasContainer>
       <div>
-        <button type='button'>
-          Pagar en Carrito $
-          {' '}
-          {carrito.length > 0 ? carrito.reduce((acc, el) => acc + el.price, 0) : 0}
-        </button>
+        <Link to='/carrito'>
+          <button type='button'>
+            Pagar en Carrito $
+            {' '}
+            {carrito.length > 0 ? carrito.reduce((acc, el) => acc + (el.price * el.pedido), 0) : 0}
+          </button>
+        </Link>
+
       </div>
     </section>
 
@@ -121,7 +127,5 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   añadirCarrito,
   eliminarCarrito,
-  añadirCarritoSugerencia,
-  eliminarCarritoSugerencia,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ProductBody);

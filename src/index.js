@@ -11,6 +11,7 @@ import reducers from './reducers/index';
 const initialState = {
   'users': [],
   'cargando': false,
+  'modal': false,
   'carrito': [],
   'tamales': [
     {

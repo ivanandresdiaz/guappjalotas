@@ -51,9 +51,7 @@ const mapStateToProps = (state, props) => {
     guajolotas: state.guajolotas,
   };
 };
-const mapDispatchToProps = {
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, null)(Home);
 
 //
