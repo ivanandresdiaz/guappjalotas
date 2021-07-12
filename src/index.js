@@ -9,7 +9,7 @@ import './styles/Global.scss';
 import reducers from './reducers/index';
 
 const initialState = {
-  'users': [],
+  'users': {},
   'cargando': false,
   'modal': false,
   'carrito': [],

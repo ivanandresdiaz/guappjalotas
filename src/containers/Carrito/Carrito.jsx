@@ -18,6 +18,9 @@ const Carrito = (props) => {
   useEffect(() => {
     modalFalse();
   }, []);
+  //PARA JORGE.
+  console.log(carrito);
+  //PARA JORGE
   return (
     <div>
       <Header />
