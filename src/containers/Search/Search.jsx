@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useMemo } from 'react';
 import { connect } from 'react-redux';
 import CardProduct from '../../components/CardProduct/CardProduct';
 import Searcher from '../../components/Searcher/Seacher';
@@ -14,9 +14,9 @@ const Search = (props) => {
     },
     [busqueda],
   ) ;
-  const filteredProducts = productos.filter((producto) => {
+  const filteredProducts = useMemo(() => productos.filter((producto) => {
     return producto.title.toLowerCase().includes(busqueda.toLowerCase());
-  });
+  }), [productos, busqueda]);
 
   return (
     <div>
