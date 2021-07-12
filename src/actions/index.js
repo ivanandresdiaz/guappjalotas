@@ -162,6 +162,11 @@ export const eliminarCarrito = (producto) => (dispatch, getState) => {
 
 export const toggleModal = (producto) => (dispatch, getState) => {
   dispatch({
-    type: 'TOGGLE_MODALL',
+    type: 'TOGGLE_MODAL',
+  });
+};
+export const modalFalse = (producto) => (dispatch, getState) => {
+  dispatch({
+    type: 'MODAL_FALSE',
   });
 };

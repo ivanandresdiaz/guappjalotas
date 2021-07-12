@@ -14,8 +14,10 @@ const reducer = (state, action) => {
       return { ...state, tamales: action.payload };
     case 'UPDATE_BEBIDAS':
       return { ...state, bebidas: action.payload };
-    case 'TOOGLE_MODAL':
+    case 'TOGGLE_MODAL':
       return { ...state, modal: !state.modal };
+    case 'MODAL_FALSE':
+      return { ...state, modal: false };
     default:
       return state;
   }

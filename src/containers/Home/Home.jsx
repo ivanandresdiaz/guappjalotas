@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useCallback } from 'react';
 import { connect } from 'react-redux';
 import Header from '../../components/Header/Header';
@@ -7,7 +9,7 @@ import '../../styles/containers/Home.scss';
 import NavHome from '../../components/NavHome/NavHome';
 
 const Home = (props) => {
-  const { tamales, bebidas, guajolotas } = props;
+  const { tamales, bebidas, guajolotas, history } = props;
   const [renderizar, setRenderizar] = useState(guajolotas);
   const handleNavLoad = useCallback(
     (producto) => {
@@ -34,7 +36,10 @@ const Home = (props) => {
       {/* envio la prop booleana para especificar que el Header es de Home, y asi validar los iconos de la navegacion correspondiente */}
       <Header isHome />
       <h1 className='Home_Greeting'>Nada como una Guajolota para empezar el día</h1>
-      <Searcher />
+      <div onClick={() => { history.push('/search'); }}>
+        <Searcher />
+      </div>
+
       <NavHome handleNavLoad={handleNavLoad} currentFocus={renderizar[0].type} />
       <div className='Home__container-products'>
         {renderizar.map((producto) => <CardProduct key={producto.id} producto={producto} />)}

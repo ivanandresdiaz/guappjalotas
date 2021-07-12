@@ -1,22 +1,23 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { MdShoppingCart } from 'react-icons/md';
+import { toggleModal, modalFalse } from '../../actions';
 import CardProductCarrito from '../../components/CardProductCarrito/CardProductCarrito';
 import Header from '../../components/Header/Header';
 import Portal from '../Portal/Portal';
 import ModalCarrito from '../../components/ModalCarrito/ModalCarrito';
 import '../../styles/containers/Product.scss';
+
 const Carrito = (props) => {
-  const { carrito } = props;
-  const [visibilityModal, setVisibilityModal] = useState(false);
+  const { carrito, modal, toggleModal, modalFalse } = props;
   const [productoModal, setProductoModal] = useState([]);
-  const handleOpenCloseModal = useCallback(
-    (producto) => {
-      setProductoModal(producto);
-      setVisibilityModal(!visibilityModal);
-    },
-    [visibilityModal],
-  );
+  const handleOpenCloseModal = (producto) => {
+    toggleModal();
+    setProductoModal(producto);
+  };
+  useEffect(() => {
+    modalFalse();
+  }, []);
   return (
     <div>
       <Header />
@@ -25,14 +26,14 @@ const Carrito = (props) => {
         <section>
           <div>
             {carrito.map((producto) => <CardProductCarrito key={producto.id} producto={producto} handleOpenCloseModal={handleOpenCloseModal} />)}
-            <div className="total">
+            <div className='total'>
               <h3>Total a pagar</h3>
-              <p className="precioPagar">{carrito.reduce((acc, el) => acc + (el.price * el.pedido), 0)}</p>
+              <p className='precioPagar'>{carrito.reduce((acc, el) => acc + (el.price * el.pedido), 0)}</p>
             </div>
-            <button type='button' className="boton-pago">Pagar</button>
+            <button type='button' className='boton-pago'>Pagar</button>
           </div>
-          <Portal isOpen={visibilityModal}>
-            <ModalCarrito handleOpenCloseModal={handleOpenCloseModal} producto={productoModal} />
+          <Portal isOpen={modal}>
+            <ModalCarrito handleOpenCloseModal={handleOpenCloseModal} modalProducto={productoModal} />
           </Portal>
         </section>
 
@@ -48,7 +49,12 @@ const Carrito = (props) => {
 const mapStateToProps = (state) => {
   return {
     carrito: state.carrito,
+    modal: state.modal,
   };
 };
+const mapDispatchToProps = {
+  toggleModal,
+  modalFalse,
+};
 
-export default connect(mapStateToProps, null)(Carrito);
+export default connect(mapStateToProps, mapDispatchToProps)(Carrito);

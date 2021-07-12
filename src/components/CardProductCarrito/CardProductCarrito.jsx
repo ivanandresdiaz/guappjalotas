@@ -4,7 +4,7 @@ import Portal from '../../containers/Portal/Portal';
 import ModalCarrito from '../ModalCarrito/ModalCarrito';
 
 const CardProductCarrito = (props) => {
-  const { producto, handleOpenCloseModal, visibilityModal } = props;
+  const { producto, handleOpenCloseModal } = props;
   return (
     <div>
       <DivCardProductCarritoContainer onClick={() => handleOpenCloseModal(producto)}>
