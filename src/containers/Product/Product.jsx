@@ -9,7 +9,7 @@ const Product = (props) => {
   const resolveRoute = () => {
     switch (type) {
       case 'guajolotas':
-        return <ProductBody products={guajolotas} keyProduct={key} productosSugerencia={bebidas} tipoSugerencia='bebidas' />;
+        return <ProductBody className="producto" products={guajolotas} keyProduct={key} productosSugerencia={bebidas}  tipoSugerencia='bebidas' />;
       case 'bebidas':
         return <ProductBody products={bebidas} keyProduct={key} productosSugerencia={guajolotas} tipoSugerencia='torta' />;
       case 'tamales':
@@ -21,8 +21,12 @@ const Product = (props) => {
   return (
     <div>
       <Header />
+     
       {
-        resolveRoute()
+        
+        resolveRoute( <div className="producto">
+
+        </div>)
       }
     </div>
   );
@@ -30,7 +34,7 @@ const Product = (props) => {
 };
 const mapStateToProps = (state) => {
   return {
-    guajolotas: state.guajolotas,
+   guajolotas: state.guajolotas,
     bebidas: state.bebidas,
     tamales: state.tamales,
   };

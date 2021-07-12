@@ -5,7 +5,7 @@ import CardProductCarrito from '../../components/CardProductCarrito/CardProductC
 import Header from '../../components/Header/Header';
 import Portal from '../Portal/Portal';
 import ModalCarrito from '../../components/ModalCarrito/ModalCarrito';
-
+import '../../styles/containers/Product.scss';
 const Carrito = (props) => {
   const { carrito } = props;
   const [visibilityModal, setVisibilityModal] = useState(false);
@@ -25,11 +25,11 @@ const Carrito = (props) => {
         <section>
           <div>
             {carrito.map((producto) => <CardProductCarrito key={producto.id} producto={producto} handleOpenCloseModal={handleOpenCloseModal} />)}
-            <div>
+            <div className="total">
               <h3>Total a pagar</h3>
-              <p>{carrito.reduce((acc, el) => acc + (el.price * el.pedido), 0)}</p>
+              <p className="precioPagar">{carrito.reduce((acc, el) => acc + (el.price * el.pedido), 0)}</p>
             </div>
-            <button type='button'>Pagar</button>
+            <button type='button' className="boton-pago">Pagar</button>
           </div>
           <Portal isOpen={visibilityModal}>
             <ModalCarrito handleOpenCloseModal={handleOpenCloseModal} producto={productoModal} />

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { MdControlPoint, MdRemoveCircleOutline } from 'react-icons/md';
 import { añadirCarrito, eliminarCarrito } from '../../actions/index';
 import { DivProductItem, DivSaboresProduct, ImgSaboresDefault, DivProductosSugerencia, DivSugerenciasContainer } from './styledProductBody';
+import '../../styles/containers/Product.scss';
 
 const ProductBody = (props) => {
   const { products, keyProduct, añadirCarrito, eliminarCarrito, productosSugerencia, tipoSugerencia, carrito } = props;
@@ -33,30 +34,30 @@ const ProductBody = (props) => {
   console.log(props.carrito);
   return (
     <section>
-      <DivProductItem key={product.id}>
-        <img src={product.cover} alt={product.title} />
-        <h4>{product.title}</h4>
-        <p>
+      <DivProductItem key={product.id} className="item">
+        <img src={product.cover} alt={product.title}  width="150" height="150"/>
+        <h1 className="titulos">{product.title}</h1>
+        <p className="valor">
           MXN
           {' '}
           {product.price}
         </p>
-        <p>
+        <p className="disponibles">
           Disponible
           {' '}
           {product.stock}
         </p>
-        <div>
-          <div onClick={() => handleEliminarCarrito(product)}>
-            <MdRemoveCircleOutline color='blue' size='30px' />
+        <div className="contador">
+          <div  onClick={() => handleEliminarCarrito(product)}>
+            <MdRemoveCircleOutline color='black' size='30px' />
           </div>
-          <p>{product.pedido}</p>
-          <div onClick={() => handleAñadirCarrito(product)}>
-            <MdControlPoint color='blue' size='30px' />
+          <p id="numero" >{product.pedido}</p>
+          <div  onClick={() => handleAñadirCarrito(product)}>
+            <MdControlPoint color='black' size='30px' />
           </div>
         </div>
       </DivProductItem>
-      <DivSaboresProduct>
+      <DivSaboresProduct className="sabores">
         {products.map((producto) => {
           if (producto.id === keyProductToNumber) {
             return (
@@ -78,7 +79,7 @@ const ProductBody = (props) => {
       </DivSaboresProduct>
       <DivSugerenciasContainer className='SugerenciaContainer'>
         <div className='Sugerencia_Presentacion'>
-          <h3>Combo</h3>
+          <h3 className="titulos">Combo</h3>
           <p>
             Selecciona las
             {' '}
@@ -87,20 +88,21 @@ const ProductBody = (props) => {
             que más te gusten y disfruta de tu desayuno.
           </p>
         </div>
-        <DivProductosSugerencia className='Productos_sugerencia'>
+        <DivProductosSugerencia className='Productos_sugerencia '>
           {productosSugerencia.map((productoSugerido) => {
             const isCarrito = carrito.filter((item) => item.id === productoSugerido.id);
             const isChecked = isCarrito.length > 0;
             return (
-              <div key={productoSugerido.id}>
+              <div  className="combo" key={productoSugerido.id}>
+                       <input className="cajita" type='checkbox' onChange={(evento) => handleChange(evento, productoSugerido)} defaultChecked={isChecked} />
                 <img src={productoSugerido.cover} alt={productoSugerido.title} />
                 <h6>{productoSugerido.title}</h6>
-                <p>
+                <p className="valorPequeño">
                   MXN
                   {' '}
                   {productoSugerido.price}
                 </p>
-                <input type='checkbox' onChange={(evento) => handleChange(evento, productoSugerido)} defaultChecked={isChecked} />
+         
               </div>
             );
           })}
@@ -108,7 +110,7 @@ const ProductBody = (props) => {
       </DivSugerenciasContainer>
       <div>
         <Link to='/carrito'>
-          <button type='button'>
+          <button type='button' className="boton-pago">
             Pagar en Carrito $
             {' '}
             {carrito.length > 0 ? carrito.reduce((acc, el) => acc + (el.price * el.pedido), 0) : 0}

@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { MdRemoveCircleOutline, MdControlPoint } from 'react-icons/md';
 import { añadirCarrito, eliminarCarrito } from '../../actions/index';
-
+import '../../styles/containers/Product.scss';
 const ModalCarrito = (props) => {
   const { añadirCarrito, eliminarCarrito, producto, handleOpenCloseModal } = props;
   const handleAñadirCarrito = (producto) => {
@@ -18,29 +18,33 @@ const ModalCarrito = (props) => {
     }
   };
   return (
-    <div key={producto.id}>
-      <button type='button' onClick={() => handleOpenCloseModal(producto)}>Cerrar</button>
+    <div key={producto.id} className="item">
+     
       <img src={producto.cover} alt={producto.title} />
-      <h4>{producto.title}</h4>
-      <p>
+      <h1 className="titulos">{producto.title}</h1>
+      <p  className="valor">
         MXN
         {' '}
         {producto.price}
       </p>
-      <p>
+      <p  className="disponibles">
         Disponible
         {' '}
         {producto.stock}
       </p>
-      <div>
+      <div className="contador">
         <div onClick={() => handleEliminarCarrito(producto)}>
-          <MdRemoveCircleOutline color='blue' size='30px' />
+          <MdRemoveCircleOutline color='black' size='30px' />
         </div>
         <p>{producto.pedido}</p>
         <div onClick={() => handleAñadirCarrito(producto)}>
-          <MdControlPoint color='blue' size='30px' />
+          <MdControlPoint color='black' size='30px' />
+       
         </div>
       </div>
+      <button type='button' className="actualizar" onClick={() => handleOpenCloseModal(producto)}>Actualizar</button>
+      <br />
+      <button type='button' className="btn-cerrar" onClick={() => handleOpenCloseModal(producto)}>Cerrar</button>
     </div>
   );
 };
