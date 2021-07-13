@@ -24,7 +24,7 @@ Platillo típico de la gastronomía de la Ciudad de México que consiste de un t
   //CUMPLIDO
 
 - Permite que agreguen y eliminen productos del carrito, crea el checkout, todo esto haciendo uso de una API Fake utilizando **JSON web server** donde se permita ejecutar peticiones HTTP.
-  //NO CUMPLIDO
+  //NO CUMPLIDOO
   [Documentación JSON web Server](https://github.com/typicode/json-server) //no tengo idea de esto, lo podriamos utilizar hardcodeado
 
 - Integra Stripe para poder hacer cobros mínimos desde 10 pesos. // no cumplido
