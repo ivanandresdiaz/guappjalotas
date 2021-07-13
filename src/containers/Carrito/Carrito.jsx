@@ -40,11 +40,17 @@ const Carrito = (props) => {
           </Portal>
         </section>
 
-      ) : (
-        <div>
-          <MdShoppingCart color='gray' size='150px' />
-          <h2>No hay productos</h2>
+      ) :(
+        <section>
+        <div className="margin-up">
+          <MdShoppingCart color='gray' size='450px' />
+          <h2 className="titulos margen-izq">No hay productos</h2>
+
+        
         </div>
+   
+          <button type='button' className="boton-pago">Pagar</button>
+          </section>
       )}
     </div>
   );

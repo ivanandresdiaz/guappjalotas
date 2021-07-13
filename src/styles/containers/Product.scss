@@ -1,91 +1,106 @@
-* {
-  background-color: white;
+*{
 
-  font-family: "Inter";
-  font-size: 12px;
-}
-.item {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  margin-bottom: 10%;
-  margin-left: 29%;
-  margin: 0 auto;
-}
-.contador {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  width: 57%;
-  border-radius: 10px;
-  padding: 10px;
-  background-color: #f2f2f2;
-  border-color: #f2f2f2;
-  font-size: 30px;
-  margin-top: 2%;
-}
-.disponibles {
-  margin-left: 18%;
-  margin-top: 2%;
-  font-size: 12px;
-}
-.valorPequeño {
-  color: #fa4a0c;
-  text-align: start;
-}
-.valor {
-  margin-left: 18%;
-  color: #fa4a0c;
-  font-size: 16px;
-  margin-top: 2%;
-}
-#numero {
-  margin-left: 15px;
-}
-.producto {
-  margin-left: 5%;
-  width: 90%;
-}
-.titulos {
-  left: 2%;
-  text-align: start;
-  font-size: 24px;
-  margin-top: 2%;
-}
-.sabores {
-  background-color: rgba(255, 255, 255, 0.219);
-  margin-left: 10%;
-}
+   background-color:   white;
 
-.combo {
-  margin-top: 0%;
-  border-radius: 14px;
+    font-family: "Inter";
+    font-size: 12px;
+}
+.item{
 
-  background-color: #f2f2f2;
+    margin-bottom: 10%;
+    margin-left: 29%
+}
+.contador{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 57%;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fffefe;
+    border-color: #ffffff;
+    font-size: 30px;
+    margin-top: 2%;
+}
+.disponibles{
+    margin-left: 18%;
+ margin-top: 2%;
+    font-size: 12px;
+    
+}
+.valorPequeño{
+    color:  #fa4a0c;
+    text-align: start;
+}
+.valor{
+    margin-left: 18%;
+    color:  #fa4a0c;
+    font-size: 16px;
+    margin-top: 2%;
+}
+#numero{
+    margin-left: 15px;
+   
+}
+.producto{
+margin-left: 5%;
+width: 90%;
 
-  position: relative;
+
+}
+.titulos{
+    left: 2%;
+text-align: start;
+font-size: 24px;
+margin-top: 2%;
+}
+.sabores{
+    background-color: rgba(255, 255, 255, 0.219);
+    margin-left: 10%;
 }
 
-.cajita {
-  position: relative;
-  margin-right: 10%;
-  margin-top: 3%;
+.combo{
+    
+    margin-top: 0%;
+border-radius: 14px;
+border-color: #f2f2f2;
+background-color: #fffdfd;
+
+position: relative;
+
+
 
   float: right;
 }
-
-.boton-pago {
-  margin-top: 12%;
-  padding: 19px;
-  background-color: #fa4a0c;
-  font-size: 16px;
-  width: 100%;
-  color: #f2f2f2;
-  border-radius: 30px;
-  border-color: #fa4a0c;
+.margen-izq{
+    margin-left: 25%;
 }
-.total {
+.margin-up{
+    margin-top: 20%;
+    margin-bottom: 35%;
+}
+.cajita{
+    position: relative;
+margin-right: 10%;
+margin-top:3%;
+ 
+   float:right
+
+}
+
+.boton-pago{
+    position: relative;
+    float:inline-end;
+margin-top: 12%;
+padding: 19px;
+    background-color:  #fa4a0c;
+    font-size: 16px;
+    width: 100%;
+    color:#f2f2f2;
+    border-radius: 30px;
+    border-color: #fa4a0c;
+}
+.total{
+    
   margin-top: 3%;
   background-color: #e2dfde;
   font-size: 24px;
@@ -120,4 +135,39 @@
   color: #fa4a0c;
   border-radius: 30px;
   border-color: #f2f2f2;
+}
+.precioPagar{
+    position: relative;
+color: #fa4a0c;
+     
+       float:right
+}
+.actualizar{
+    margin-top: 5%;
+    padding: 15px;
+        background-color:  #fa4a0c;
+        font-size: 26px;
+        width: 45%;
+        color:#f2f2f2;
+        border-radius: 30px;
+        border-color: #fa4a0c;
+
+}
+.btn-cerrar{
+    margin-top: 5%;
+    padding: 15px;
+        background-color:  #f2f2f2;
+        font-size: 26px;
+        width: 45%;
+        color:#fa4a0c;
+        border-radius: 30px;
+        border-color: #f2f2f2;
+
+}
+.bordeado{
+    width: 100%;
+    max-width:525px;
+    position:relative;
+  
+
 }
