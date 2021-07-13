@@ -1,7 +1,7 @@
 # guappjalotas
-Sprint 2 academia Geek
-💎 Aplicación Guappjalotas 
-**¿Qué es una guajolota?**
+#Sprint 2 academia Geek
+#💎 Aplicación Guappjalotas 
+#**¿Qué es una guajolota?**
 
 Platillo típico de la gastronomía de la Ciudad de México que consiste de un tamal dentro de un bolillo.
 Puedes verlo aqui => https://gifted-goodall-b3710a.netlify.app/
@@ -31,8 +31,8 @@ ReactJS
 Redux
 
 🌟 Autores
-Andres Diaz 
-Jorge Quintero 
-Geraldine Jaramillo
-Mackling Moreno 
-Luisa Fda Garcia
+#Andres Diaz 
+#Jorge Quintero 
+#Geraldine Jaramillo
+#Mackling Moreno 
+#Luisa Fda Garcia
