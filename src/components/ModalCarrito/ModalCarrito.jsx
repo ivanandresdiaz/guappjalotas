@@ -3,6 +3,11 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { MdRemoveCircleOutline, MdControlPoint } from 'react-icons/md';
 import { añadirCarrito, eliminarCarrito } from '../../actions/index';
+import { DivProductItem, DivSaboresProduct, ImgSaboresDefault, DivProductosSugerencia, DivSugerenciasContainer } from '../ProductBody/styledProductBody';
+
+;
+import Portal from '../../containers/Portal/Portal';
+
 import '../../styles/containers/Product.scss';
 
 const ModalCarrito = (props) => {
@@ -33,9 +38,15 @@ const ModalCarrito = (props) => {
     }
   };
   return (
+<<<<<<< HEAD
     <div key={producto.id} className='item'>
       {//hay que poner clases mas descriptivas, Item es muy generalistas
       }
+=======
+    <div className="bordeado">
+    <div key={producto.id} className="item">
+     
+>>>>>>> diseño-mack
       <img src={producto.cover} alt={producto.title} />
       <h1 className='titulos'>{producto.title}</h1>
       <p className='valor'>
@@ -61,6 +72,7 @@ const ModalCarrito = (props) => {
       <button type='button' className='actualizar' onClick={() => handleOpenCloseModal(producto)}>Actualizar</button>
       <br />
       <button type='button' className='btn-cerrar' onClick={() => handleOpenCloseModal(producto)}>Cerrar</button>
+    </div>
     </div>
   );
 };

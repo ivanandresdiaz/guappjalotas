@@ -31,20 +31,36 @@ const Carrito = (props) => {
             {carrito.map((producto) => <CardProductCarrito key={producto.id} producto={producto} handleOpenCloseModal={handleOpenCloseModal} />)}
             <div className='total'>
               <h3>Total a pagar</h3>
+<<<<<<< HEAD
               <p className='precioPagar'>{carrito.reduce((acc, el) => acc + (el.price * el.pedido), 0)}</p>
             </div>
             <button type='button' className='boton-pago'>Pagar</button>
           </div>
           <Portal isOpen={modal}>
             <ModalCarrito handleOpenCloseModal={handleOpenCloseModal} modalProducto={productoModal} />
+=======
+              <p className="precioPagar">{carrito.reduce((acc, el) => acc + (el.price * el.pedido), 0)}</p>
+              <Portal isOpen={visibilityModal}>
+            <ModalCarrito handleOpenCloseModal={handleOpenCloseModal} producto={productoModal} />
+>>>>>>> diseño-mack
           </Portal>
+            </div>
+            
+          </div>
+          <button type='button' className="boton-pago">Pagar</button>
         </section>
 
       ) : (
-        <div>
-          <MdShoppingCart color='gray' size='150px' />
-          <h2>No hay productos</h2>
+        <section>
+        <div className="margin-up">
+          <MdShoppingCart color='gray' size='450px' />
+          <h2 className="titulos margen-izq">No hay productos</h2>
+
+        
         </div>
+   
+          <button type='button' className="boton-pago">Pagar</button>
+          </section>
       )}
     </div>
   );
