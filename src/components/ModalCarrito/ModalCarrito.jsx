@@ -3,7 +3,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { MdRemoveCircleOutline, MdControlPoint } from 'react-icons/md';
 import { añadirCarrito, eliminarCarrito } from '../../actions/index';
+import { DivProductItem, DivSaboresProduct, ImgSaboresDefault, DivProductosSugerencia, DivSugerenciasContainer } from '../ProductBody/styledProductBody';
+
+;
+import Portal from '../../containers/Portal/Portal';
+
 import '../../styles/containers/Product.scss';
+
 const ModalCarrito = (props) => {
   const { añadirCarrito, eliminarCarrito, producto, handleOpenCloseModal } = props;
   const handleAñadirCarrito = (producto) => {
@@ -18,6 +24,7 @@ const ModalCarrito = (props) => {
     }
   };
   return (
+    <div className="bordeado">
     <div key={producto.id} className="item">
      
       <img src={producto.cover} alt={producto.title} />
@@ -45,6 +52,7 @@ const ModalCarrito = (props) => {
       <button type='button' className="actualizar" onClick={() => handleOpenCloseModal(producto)}>Actualizar</button>
       <br />
       <button type='button' className="btn-cerrar" onClick={() => handleOpenCloseModal(producto)}>Cerrar</button>
+    </div>
     </div>
   );
 };
