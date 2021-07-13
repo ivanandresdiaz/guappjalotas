@@ -1,13 +1,7 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { MdRemoveCircleOutline, MdControlPoint } from 'react-icons/md';
 import { añadirCarrito, eliminarCarrito } from '../../actions/index';
-import { DivProductItem, DivSaboresProduct, ImgSaboresDefault, DivProductosSugerencia, DivSugerenciasContainer } from '../ProductBody/styledProductBody';
-
-;
-import Portal from '../../containers/Portal/Portal';
-
 import '../../styles/containers/Product.scss';
 
 const ModalCarrito = (props) => {
@@ -38,15 +32,10 @@ const ModalCarrito = (props) => {
     }
   };
   return (
-<<<<<<< HEAD
+    <div className="bordeado">
     <div key={producto.id} className='item'>
       {//hay que poner clases mas descriptivas, Item es muy generalistas
       }
-=======
-    <div className="bordeado">
-    <div key={producto.id} className="item">
-     
->>>>>>> diseño-mack
       <img src={producto.cover} alt={producto.title} />
       <h1 className='titulos'>{producto.title}</h1>
       <p className='valor'>
