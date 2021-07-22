@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { MdRemoveCircleOutline, MdControlPoint } from 'react-icons/md';
@@ -33,6 +32,7 @@ const ModalCarrito = (props) => {
     }
   };
   return (
+    <div className="bordeado">
     <div key={producto.id} className='item'>
       {//hay que poner clases mas descriptivas, Item es muy generalistas
       }
@@ -61,6 +61,7 @@ const ModalCarrito = (props) => {
       <button type='button' className='actualizar' onClick={() => handleOpenCloseModal(producto)}>Actualizar</button>
       <br />
       <button type='button' className='btn-cerrar' onClick={() => handleOpenCloseModal(producto)}>Cerrar</button>
+    </div>
     </div>
   );
 };
